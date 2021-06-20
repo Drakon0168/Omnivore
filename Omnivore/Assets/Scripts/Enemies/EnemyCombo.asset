@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a439a0b751a984c87b244a3add7313, type: 3}
+  m_Name: EnemyCombo
+  m_EditorClassIdentifier: 
+  attacks:
+  - id: 0
+  - id: 1
+  chains:
+  - Sword
+  weapon: {fileID: 0}
+  references:
+    version: 1
+    00000000:
+      type: {class: CSAttack, ns: CombatSystem, asm: Assembly-CSharp}
+      data:
+        name: Entry
+        graphPosition: {x: 120, y: 232}
+        chains:
+        - id: 1
+        parent:
+          id: 2
+        isEntry: 1
+        weapon: {fileID: 0}
+        damageMult: 0
+        colliderPath: 
+        windupTime: 0
+        attackTime: 0
+        cooldownTime: 0
+        comboTime: 0
+    00000001:
+      type: {class: CSAttack, ns: CombatSystem, asm: Assembly-CSharp}
+      data:
+        name: LightSwipe
+        graphPosition: {x: 217, y: 232}
+        chains:
+        - id: 2
+        parent:
+          id: 0
+        isEntry: 0
+        weapon: {fileID: 0}
+        damageMult: 1
+        colliderPath: Weapon/Sword
+        windupTime: 0.25
+        attackTime: 0.1
+        cooldownTime: 0.05
+        comboTime: 0
+    00000002:
+      type: {class: , ns: , asm: }

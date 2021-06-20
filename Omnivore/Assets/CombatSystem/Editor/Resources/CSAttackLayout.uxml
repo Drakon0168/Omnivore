@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
+>
+  <VisualElement name ="MainContainer" class="Container">
+    <editor:ObjectField name="ColliderField" label="Collider "></editor:ObjectField>
+    <editor:FloatField name="DamageField" label="Damage Multiplier "></editor:FloatField>
+    <editor:FloatField name="WindupField" label="Windup Time "></editor:FloatField>
+    <editor:FloatField name="AttackTimeField" label="Attack Time "></editor:FloatField>
+    <editor:FloatField name="CooldownField" label="Cooldown Time "></editor:FloatField>
+    <editor:FloatField name="ComboTimeField" label="Combo Time "></editor:FloatField>
+  </VisualElement>
+</UXML>

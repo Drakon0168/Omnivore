@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36c6f3836a09dd4bb6294beac60b6eb, type: 3}
   m_Name: PlayerMSStats
   m_EditorClassIdentifier: 
-  moveSpeed: 1.6
+  moveSpeed: 2.5
   variableSpeed: 1
   strafeSpeedMult: 0.8
   backSpeedMult: 0.7
