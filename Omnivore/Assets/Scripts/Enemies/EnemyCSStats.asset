@@ -1,22 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad7333eb369e4ad4082c76166812c2ab, type: 3}
-  m_Name: EnemyCSStats
-  m_EditorClassIdentifier: 
-  maxHealth: 25
-  healthRegenEnabled: 0
-  healthRegen: 5
-  healthRegenTime: 5
-  shieldsEnabled: 0
-  maxShield: 50
-  shieldRegen: 20
-  shieldRegenTime: 2.5
+version https://git-lfs.github.com/spec/v1
+oid sha256:0da4ec1bc5d943e56b71d82c0f0b7a2bad4daf5721b62f0007b8d82b62cbf267
+size 556
