@@ -50,9 +50,9 @@ MonoBehaviour:
         weapon: {fileID: 0}
         damageMult: 1
         colliderPath: Weapon/Sword
-        windupTime: 0.25
-        attackTime: 0.1
-        cooldownTime: 0.05
+        windupTime: 0.533
+        attackTime: 0.3
+        cooldownTime: 2.5
         comboTime: 0
     00000002:
       type: {class: , ns: , asm: }

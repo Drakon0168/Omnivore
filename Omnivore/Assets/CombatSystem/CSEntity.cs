@@ -15,6 +15,7 @@ namespace CombatSystem
         private CSEntityStats stats;
         private float health;
         private float shields;
+        private bool dead = false;
 
         private bool healthRegening;
         private bool shieldRegening;
@@ -24,6 +25,14 @@ namespace CombatSystem
         private Coroutine shieldCoroutine;
 
         #region Accessors
+
+        /// <summary>
+        /// Whether or not the entity is dead
+        /// </summary>
+        public bool Dead
+        {
+            get { return dead; }
+        }
 
         /// <summary>
         /// The base stats of the entity
@@ -46,6 +55,7 @@ namespace CombatSystem
                 if (health <= 0)
                 {
                     health = 0;
+                    dead = true;
                     OnDeath?.Invoke();
                 }
                 else if (health >= Stats.MaxHealth)
@@ -136,7 +146,7 @@ namespace CombatSystem
             Shields = Stats.MaxShields;
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider collision)
         {
             if (OnEntityEnter != null)
             {
@@ -154,7 +164,7 @@ namespace CombatSystem
             }
         }
 
-        private void OnCollisionExit(Collision collision)
+        private void OnTriggerExit(Collider collision)
         {
             if (OnEntityExit != null)
             {
@@ -172,7 +182,7 @@ namespace CombatSystem
             }
         }
 
-        private void OnCollisionStay(Collision collision)
+        private void OnTriggerStay(Collider collision)
         {
             if (OnEntityHit != null)
             {
@@ -229,7 +239,7 @@ namespace CombatSystem
                     {
                         if (healthCoroutine != null)
                         {
-                            StopCoroutine(shieldCoroutine);
+                            StopCoroutine(healthCoroutine);
                         }
 
                         healthCoroutine = StartCoroutine(RegenHealth());
@@ -241,7 +251,7 @@ namespace CombatSystem
                 {
                     if (healthCoroutine != null)
                     {
-                        StopCoroutine(shieldCoroutine);
+                        StopCoroutine(healthCoroutine);
                     }
 
                     healthCoroutine = StartCoroutine(RegenHealth());

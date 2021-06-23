@@ -10,5 +10,13 @@ namespace CombatSystem
         [SerializeField]
         [Tooltip("The base amount of damage that this weapon deals.")]
         private float baseDamage;
+
+        /// <summary>
+        /// The base amount of damage that this weapon deals.
+        /// </summary>
+        public float BaseDamage
+        {
+            get { return baseDamage; }
+        }
     }
 }

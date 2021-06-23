@@ -20,9 +20,6 @@ MonoBehaviour:
   - id: 4
   - id: 5
   - id: 1
-  - id: 2
-  - id: 3
-  - id: 4
   chains:
   - Sword
   - Gun
@@ -35,8 +32,8 @@ MonoBehaviour:
         name: Entry
         graphPosition: {x: 75, y: 240}
         chains:
-        - id: 5
-        - id: 4
+        - id: 2
+        - id: 1
         parent:
           id: 6
         isEntry: 1
@@ -48,60 +45,6 @@ MonoBehaviour:
         cooldownTime: 0
         comboTime: 0
     00000001:
-      type: {class: CSAttack, ns: CombatSystem, asm: Assembly-CSharp}
-      data:
-        name: BasicSlash
-        graphPosition: {x: 525, y: 132}
-        chains:
-        - id: 2
-        - id: 3
-        parent:
-          id: 5
-        isEntry: 0
-        weapon: {fileID: 0}
-        damageMult: 1
-        colliderPath: Weapon/Sword
-        windupTime: 0.05
-        attackTime: 0.1
-        cooldownTime: 0.05
-        comboTime: 0.15
-    00000002:
-      type: {class: CSAttack, ns: CombatSystem, asm: Assembly-CSharp}
-      data:
-        name: Stab
-        graphPosition: {x: 887, y: 30}
-        chains:
-        - id: 6
-        - id: 6
-        parent:
-          id: 1
-        isEntry: 0
-        weapon: {fileID: 0}
-        damageMult: 1.5
-        colliderPath: Weapon/Sword
-        windupTime: 0.1
-        attackTime: 0.1
-        cooldownTime: 0.2
-        comboTime: 0
-    00000003:
-      type: {class: CSAttack, ns: CombatSystem, asm: Assembly-CSharp}
-      data:
-        name: QuickShot
-        graphPosition: {x: 888, y: 271}
-        chains:
-        - id: 6
-        - id: 6
-        parent:
-          id: 1
-        isEntry: 0
-        weapon: {fileID: 0}
-        damageMult: 0.5
-        colliderPath: 
-        windupTime: 0.05
-        attackTime: 0
-        cooldownTime: 0.1
-        comboTime: 0
-    00000004:
       type: {class: CSAttack, ns: CombatSystem, asm: Assembly-CSharp}
       data:
         name: QuickShot
@@ -119,13 +62,13 @@ MonoBehaviour:
         attackTime: 0
         cooldownTime: 0.2
         comboTime: 0
-    00000005:
+    00000002:
       type: {class: CSAttack, ns: CombatSystem, asm: Assembly-CSharp}
       data:
         name: BasicSlash
         graphPosition: {x: 199, y: 132}
         chains:
-        - id: 1
+        - id: 3
         - id: 6
         parent:
           id: 0
@@ -133,9 +76,63 @@ MonoBehaviour:
         weapon: {fileID: 0}
         damageMult: 1
         colliderPath: Weapon/Sword
-        windupTime: 0.15
-        attackTime: 0.1
-        cooldownTime: 0.05
+        windupTime: 0.533
+        attackTime: 0.3
+        cooldownTime: 0.667
         comboTime: 0.15
+    00000003:
+      type: {class: CSAttack, ns: CombatSystem, asm: Assembly-CSharp}
+      data:
+        name: BasicSlash
+        graphPosition: {x: 525, y: 132}
+        chains:
+        - id: 4
+        - id: 5
+        parent:
+          id: 2
+        isEntry: 0
+        weapon: {fileID: 0}
+        damageMult: 1.5
+        colliderPath: Weapon/Sword
+        windupTime: 0.533
+        attackTime: 0.533
+        cooldownTime: 0.6
+        comboTime: 0.15
+    00000004:
+      type: {class: CSAttack, ns: CombatSystem, asm: Assembly-CSharp}
+      data:
+        name: HeavySlash
+        graphPosition: {x: 887, y: 30}
+        chains:
+        - id: 6
+        - id: 6
+        parent:
+          id: 3
+        isEntry: 0
+        weapon: {fileID: 0}
+        damageMult: 1
+        colliderPath: Weapon/Sword
+        windupTime: 0.533
+        attackTime: 0.1
+        cooldownTime: 0.667
+        comboTime: 0
+    00000005:
+      type: {class: CSAttack, ns: CombatSystem, asm: Assembly-CSharp}
+      data:
+        name: QuickShot
+        graphPosition: {x: 888, y: 271}
+        chains:
+        - id: 6
+        - id: 6
+        parent:
+          id: 3
+        isEntry: 0
+        weapon: {fileID: 0}
+        damageMult: 0.5
+        colliderPath: 
+        windupTime: 0.05
+        attackTime: 0
+        cooldownTime: 0.1
+        comboTime: 0
     00000006:
       type: {class: , ns: , asm: }

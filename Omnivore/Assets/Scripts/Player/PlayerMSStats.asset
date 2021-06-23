@@ -24,7 +24,7 @@ MonoBehaviour:
   jumpVelocity: 5
   canFly: 0
   dashSpeed: 15
-  dashTime: 0.15
+  dashTime: 0.2
   variableDashSpeed: 1
   dashSpeedOverTime:
     serializedVersion: 2

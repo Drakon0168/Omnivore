@@ -18,7 +18,7 @@ MonoBehaviour:
   backSpeedMult: 0.25
   forwardAngle: 60
   backwardsAngle: 30
-  sprintSpeed: 6
+  sprintSpeed: 4.5
   accelerationTime: 0.2
   moveForce: 100
   jumpVelocity: 5

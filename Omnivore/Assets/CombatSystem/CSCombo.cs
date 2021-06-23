@@ -55,6 +55,14 @@ namespace CombatSystem
         #region Accessors
 
         /// <summary>
+        /// Whether or not the combo is in the middle of attacking
+        /// </summary>
+        public bool Attacking
+        {
+            get { return activeAttack.Attacking; }
+        }
+
+        /// <summary>
         /// The full list of attacks in this combo tree
         /// </summary>
         private List<CSAttack> Attacks

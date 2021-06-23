@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using MovementSystem;
 using CombatSystem;
@@ -22,6 +23,9 @@ public class Player : MonoBehaviour
 
     private Vector2 moveInput;
     private Vector2 lookInput;
+
+    [SerializeField]
+    private Slider healthSlider;
 
     #region Animator Settings
 
@@ -63,13 +67,26 @@ public class Player : MonoBehaviour
         set { animator.SetFloat("Speed", value); }
     }
 
+    /// <summary>
+    /// The attacking parameter on the animator;
+    /// </summary>
+    public bool Attacking
+    {
+        get { return animator.GetBool("Attacking"); }
+        set { animator.SetBool("Attacking", value); }
+    }
+
     #endregion
 
     private void Awake()
     {
         movementEntity = GetComponent<MSEntity>();
         combatEntity = GetComponent<CSEntity>();
+        combatEntity.OnDeath += OnDeath;
+        combatEntity.OnEntityEnter += WeaponHit;
         inputActions = GetComponent<PlayerInput>().actions;
+
+        weapon.Combo.ComboEnd += ComboEnd;
 
         //Setup input events
         InputActionMap gameplayMap = inputActions.FindActionMap("Gameplay");
@@ -82,14 +99,23 @@ public class Player : MonoBehaviour
         gameplayMap.FindAction("Sprint").performed += OnSprint;
 
         gameplayMap.FindAction("Dodge").performed += OnDodge;
+
+        gameplayMap.FindAction("LightAttack").performed += OnLightAttack;
+        gameplayMap.FindAction("HeavyAttack").performed += OnHeavyAttack;
+
+        healthSlider.maxValue = combatEntity.Stats.MaxHealth;
+        healthSlider.value = combatEntity.Stats.MaxHealth;
     }
 
     private void Update()
     {
-        transform.LookAt(new Vector3(lookTarget.position.x, transform.position.y, lookTarget.position.z));
+        if (!weapon.Attacking)
+        {
+            transform.LookAt(new Vector3(lookTarget.position.x, transform.position.y, lookTarget.position.z));
 
-        transform.Rotate(0, lookInput.x * lookSensetivity * Time.deltaTime, 0);
-        movementEntity.Move(new Vector3(moveInput.x, 0, moveInput.y), false);
+            transform.Rotate(0, lookInput.x * lookSensetivity * Time.deltaTime, 0);
+            movementEntity.Move(new Vector3(moveInput.x, 0, moveInput.y), false);
+        }
 
         //Update Animator Parameters
         Vector3 localVelocity = transform.InverseTransformDirection(movementEntity.Velocity);
@@ -98,9 +124,49 @@ public class Player : MonoBehaviour
         Speed = speed;
         MoveDirection = new Vector2(localVelocity.x, localVelocity.z) / speed;
         Walking = speed > 0.1f;
+        Attacking = weapon.Attacking;
+
+        //Update UI
+        healthSlider.value = combatEntity.Health;
+    }
+
+    private void OnDeath()
+    {
+        animator.SetTrigger("Death");
+    }
+
+    private void ComboEnd()
+    {
+        animator.SetTrigger("ComboEnd");
+    }
+
+    private void WeaponHit(CSEntity other)
+    {
+        if(other.tag == "Enemy")
+        {
+            other.TakeDamage(weapon.Stats.BaseDamage * weapon.Combo.ActiveAttack.DamageMult);
+        }
     }
 
     #region Input Management
+
+    private void OnLightAttack(InputAction.CallbackContext context)
+    {
+        if (!movementEntity.Dashing)
+        {
+            animator.SetTrigger("LightAttack");
+            weapon.Attack(0);
+        }
+    }
+
+    private void OnHeavyAttack(InputAction.CallbackContext context)
+    {
+        if (!movementEntity.Dashing)
+        {
+            animator.SetTrigger("Shoot");
+            weapon.Attack(1);
+        }
+    }
 
     private void OnMove(InputAction.CallbackContext context)
     {
@@ -120,8 +186,11 @@ public class Player : MonoBehaviour
 
     private void OnDodge(InputAction.CallbackContext context)
     {
-        movementEntity.Dash(new Vector3(moveInput.x, 0, moveInput.y), false);
-        animator.SetTrigger("Dodge");
+        if (!weapon.Attacking)
+        {
+            movementEntity.Dash(new Vector3(moveInput.x, 0, moveInput.y), false);
+            animator.SetTrigger("Dodge");
+        }
     }
 
     #endregion

@@ -35,7 +35,7 @@
                     "id": "3e5b58ba-08ab-487e-8ff1-583aa606b137",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap"
+                    "interactions": ""
                 },
                 {
                     "name": "TrackCamera",
@@ -177,17 +177,6 @@
                     "name": "",
                     "id": "ea5bf6d6-9259-421c-a4d0-286871858f81",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Dodge",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5bc2cd08-dabc-49c9-b025-53875c06e16b",
-                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
